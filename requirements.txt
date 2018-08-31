@@ -1,0 +1,6 @@
+beautifulsoup4==4.6.1
+PyQt5==5.11.2
+PyQt5-sip==4.19.12
+pyunpack==0.1.2
+PyYAML==3.13
+six==1.11.0

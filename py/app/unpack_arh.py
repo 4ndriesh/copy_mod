@@ -1,10 +1,13 @@
 from pyunpack import Archive
 import os
+from config import Config
+
 import shutil
 class unpack():
     def __init__(self):
         print('unpackr')
-        self.path_to = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),'archive_unpack')
+        setting = Config.inst()
+        self.path_to = os.path.join(setting.version[3],'archive_unpack')
     def mk_dir(self):
         if not os.path.isdir(self.path_to):
             os.makedirs(self.path_to)

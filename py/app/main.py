@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 __author__ = 'BiziurAA'
-import PyQt5.QtCore
+import PyQt5.QtQuick
 from unpack_arh import unpack
-from parser import parser
+from parser_modul import parser
 import os
 from config import Config
 from qml import qml

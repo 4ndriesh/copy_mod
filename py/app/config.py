@@ -18,8 +18,7 @@ class Config:
             # If the application is run as a bundle, the pyInstaller bootloader
             # extends the sys module by a flag frozen=True and sets the app
             # path into variable _MEIPASS'.
-            application_path = os.path.split(os.getcwd())
-            self.BASE_DIR =application_path[0]
+            self.BASE_DIR =os.getcwd()
         else:
             self.BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         self.dir_unpack_out = os.path.join(self.BASE_DIR, 'archive_pack')
@@ -39,7 +38,7 @@ class Config:
     @property
     def version(self):
         try:
-            return [self.config['version'],self.dir_unpack_out,self.dir_unpack_in]
+            return [self.config['version'],self.dir_unpack_out,self.dir_unpack_in ,self.BASE_DIR ]
         except:
             self.config = {'version':'нет версии'}
 

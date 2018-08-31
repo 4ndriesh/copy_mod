@@ -2,7 +2,7 @@ from PyQt5.QtCore import QObject, QTimer, pyqtProperty, pyqtSignal, pyqtSlot
 from PyQt5.QtGui import QGuiApplication
 from PyQt5.QtQml import QQmlListProperty, QQmlApplicationEngine, qmlRegisterType
 from sys import argv
-
+from config import Config
 import sys
 import os
 from walk_dir import walk
@@ -65,7 +65,8 @@ class Store(QObject):
 
 
 def qml(scan_dir):
-    path_to_qml = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'qml', 'button', 'main.qml')
+    setting = Config.inst()
+    path_to_qml = os.path.join(setting.version[3], 'qml', 'button', 'main.qml')
     app = QGuiApplication(argv)
 
     # qmlRegisterType(Channel, 'Example', 1, 0, 'Channel')

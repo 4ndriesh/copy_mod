@@ -5,6 +5,7 @@ from sys import argv
 from config import Config
 import sys
 import os
+from copy_file import copy
 from walk_dir import walk
 
 obj = walk()
@@ -46,8 +47,9 @@ class Store(QObject):
         list_file_for_copy = []
         for i in obj.get_walk_dbsta(index):
             list_file_for_copy.append(i)
-        for i in list_file_for_copy:
-            print(i)
+
+        copy(list_file_for_copy)
+
 
     @pyqtProperty(QQmlListProperty, notify=channelsChanged)
     def channels(self):

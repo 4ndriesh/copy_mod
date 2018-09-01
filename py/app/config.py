@@ -38,7 +38,7 @@ class Config:
     @property
     def version(self):
         try:
-            return [self.config['version'],self.dir_unpack_out,self.dir_unpack_in ,self.BASE_DIR ]
+            return [self.config['version'],self.dir_unpack_out,self.dir_unpack_in ,self.BASE_DIR, self.config['path']]
         except:
             self.config = {'version':'нет версии'}
 

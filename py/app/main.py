@@ -6,6 +6,7 @@ from parser_modul import parser
 import os
 from config import Config
 from qml import qml
+
 setting = Config.inst()
 
 def Main():

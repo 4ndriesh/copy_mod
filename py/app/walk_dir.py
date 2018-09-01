@@ -23,6 +23,7 @@ class walk():
                         dir = os.path.join(root, d)
                         for f in os.listdir(dir):
                             if os.path.isfile(os.path.join(dir, f)) and self.dir_filters[dir_for_search.lower()].match(f.lower()):
+                                print(f)
                                 yield (key, dir, f)
                             else:
                                 dir = os.path.join(dir, f)

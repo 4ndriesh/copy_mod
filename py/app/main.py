@@ -26,7 +26,8 @@ def Main():
             obj_parser.save_file(obj_parser.get_url_tag(), name_file_for_down)
 
             ua = unpack()
-            ua.unpack_archive(archiv_for_unpack, os.path.splitext(name_file_for_down))
+            ua.unpack_rar(archiv_for_unpack, os.path.splitext(name_file_for_down))
+            # ua.unpack_archive(archiv_for_unpack, os.path.splitext(name_file_for_down))
             # # del ua
     else:
         print('NO coonecting to url')

@@ -3,7 +3,14 @@ from datetime import datetime
 import shutil
 from config import Config
 import os
-def copy(list_file_for_copy):
+from walk_dir import walk
+
+
+def copy(index):
+    obj = walk()
+    list_file_for_copy = []
+    for i in obj.get_walk_dbsta(index):
+        list_file_for_copy.append(i)
     setting = Config.inst()
     gettimedir = timedir()
     gettimedir.timedate = setting.version[4]
@@ -13,7 +20,6 @@ def copy(list_file_for_copy):
     for i in dict_after_sort:
         print(datetime.fromtimestamp(i).strftime('%d/%m/%Y'))
 
-    print("-----------------------")
     inc = 0
     for i in range(len(dict_after_sort)):
 

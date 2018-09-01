@@ -1,5 +1,6 @@
 from pyunpack import Archive
 import os
+import rarfile
 from config import Config
 
 import shutil
@@ -19,3 +20,7 @@ class unpack():
         if not os.path.isdir(make_dir_for_unpack):
             os.makedirs(make_dir_for_unpack)
         Archive(path_dir).extractall(make_dir_for_unpack)
+    def unpack_rar(self,path_dir, name_mod):
+        rarfile.UNRAR_TOOL = "unrar"
+        make_dir_for_unpack = os.path.join(self.path_to, name_mod[0])
+        rarfile.RarFile(path_dir).extractall(make_dir_for_unpack)

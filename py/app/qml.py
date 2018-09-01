@@ -6,9 +6,7 @@ from config import Config
 import sys
 import os
 from copy_file import copy
-from walk_dir import walk
 
-obj = walk()
 
 
 class Channel(QObject):
@@ -44,11 +42,8 @@ class Store(QObject):
     @pyqtSlot(int, str, name="sum")
     def sum(self, index, checked):
         pass
-        list_file_for_copy = []
-        for i in obj.get_walk_dbsta(index):
-            list_file_for_copy.append(i)
 
-        copy(list_file_for_copy)
+        copy(index)
 
 
     @pyqtProperty(QQmlListProperty, notify=channelsChanged)
@@ -69,15 +64,17 @@ class Store(QObject):
 def qml(scan_dir):
     setting = Config.inst()
     path_to_qml = os.path.join(setting.version[3], 'qml', 'button', 'main.qml')
-    app = QGuiApplication(argv)
+
 
     # qmlRegisterType(Channel, 'Example', 1, 0, 'Channel')
     # qmlRegisterType(Store, 'Example', 1, 0, 'Store')
 
     store = Store()
-
+    app = QGuiApplication(argv)
     engine = QQmlApplicationEngine()
+
     engine.rootContext().setContextProperty('store', store)
+
     engine.load(path_to_qml)
 
     # After 3 seconds, we append a new Channel
